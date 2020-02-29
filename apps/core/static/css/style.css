@@ -201,7 +201,7 @@ button {
 .taskItem {
     border-top: 1px solid #e5e5e5;
     padding: 15px 0;
-    color: #777;
+    color: #444;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.5px;
@@ -217,11 +217,11 @@ button {
 
 .complete-true {
     text-decoration:  line-through;
-    color: #bebebe;
+    color: #444;
 }
 
 .taskList .taskDate {
-    color: #95a5a6;
+    color: #444;
     font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
@@ -229,7 +229,7 @@ button {
     margin-left: 41px;
 }
 
-.fa-calendar {
+.fa-size-base{
     margin-right: 10px;
     font-size: 16px;
 }
@@ -253,25 +253,31 @@ button {
 .category- {
     background: transparent;
 }
-
-.category-Personal {
-    background: #2980b9;
+.category-base {
+    background: #e74c3c;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
 }
 
-.category-Work {
-    background: #8e44ad;
+.category-Pessoal {
+    color: #2980b9;
 }
 
-.category-School {
-    background: #f39c12;
+.category-Trabalho {
+    color: #8e44ad;
 }
 
-.category-Cleaning {
-    background: #16a085;
+.category-Escola {
+    color: #f39c12;
 }
 
-.category-Other {
-    background: #d35400;
+.category-Limpeza {
+    color: #16a085;
+}
+
+.category-Outros {
+    color: #d35400;
 }
 
 footer {

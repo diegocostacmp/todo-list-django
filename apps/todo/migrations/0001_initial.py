@@ -8,33 +8,50 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
-            options={
-                'verbose_name': 'Categoria',
-                'verbose_name_plural': 'Categorias',
-            },
+            options={"verbose_name": "Categoria", "verbose_name_plural": "Categorias",},
         ),
         migrations.CreateModel(
-            name='TodoList',
+            name="TodoList",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=250)),
-                ('content', models.TextField(blank=True)),
-                ('created', models.DateField(default='29-02-2020')),
-                ('due_date', models.DateField(default='29-02-2020')),
-                ('category', models.ForeignKey(default='general', on_delete=django.db.models.deletion.PROTECT, to='todo.Category')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=250)),
+                ("content", models.TextField(blank=True)),
+                ("created", models.DateField(default="29-02-2020")),
+                ("due_date", models.DateField(default="29-02-2020")),
+                (
+                    "category",
+                    models.ForeignKey(
+                        default="general",
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="todo.Category",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['-created'],
-            },
+            options={"ordering": ["-created"],},
         ),
     ]

@@ -7,31 +7,32 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('todo', '0001_initial'),
+        ("todo", "0001_initial"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='todolist',
-            name='content',
-        ),
-        migrations.RemoveField(
-            model_name='todolist',
-            name='due_date',
+        migrations.RemoveField(model_name="todolist", name="content",),
+        migrations.RemoveField(model_name="todolist", name="due_date",),
+        migrations.AlterField(
+            model_name="todolist",
+            name="category",
+            field=models.ForeignKey(
+                default="geral",
+                on_delete=django.db.models.deletion.PROTECT,
+                to="todo.Category",
+                verbose_name="Categoria",
+            ),
         ),
         migrations.AlterField(
-            model_name='todolist',
-            name='category',
-            field=models.ForeignKey(default='geral', on_delete=django.db.models.deletion.PROTECT, to='todo.Category', verbose_name='Categoria'),
+            model_name="todolist",
+            name="created",
+            field=models.DateField(
+                auto_now_add=True, null=True, verbose_name="Data de criação"
+            ),
         ),
         migrations.AlterField(
-            model_name='todolist',
-            name='created',
-            field=models.DateField(auto_now_add=True, null=True, verbose_name='Data de criação'),
-        ),
-        migrations.AlterField(
-            model_name='todolist',
-            name='title',
-            field=models.CharField(max_length=250, verbose_name='Título'),
+            model_name="todolist",
+            name="title",
+            field=models.CharField(max_length=250, verbose_name="Título"),
         ),
     ]
