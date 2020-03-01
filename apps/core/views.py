@@ -2,4 +2,5 @@ from django.shortcuts import render
 
 
 def login(request):
-    pass
+    template_name = "registration/login.html"
+    return render(request, template_name, {})
