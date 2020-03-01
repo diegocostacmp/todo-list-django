@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block style %}
-   <!-- Bootstrap core CSS -->
-   
-{% endblock %}
-
 {% block main %}
 <form class="form-signin">
     <img
@@ -15,8 +10,8 @@
     width="72"
     height="72"
     />
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
+    <h1 class="h3 mb-3 font-weight-normal">We Can Do</h1>
+    <label for="inputEmail" class="sr-only">Endereço de e-mail</label>
     <input
     type="email"
     id="inputEmail"
@@ -25,7 +20,7 @@
     required
     autofocus
     />
-    <label for="inputPassword" class="sr-only">Password</label>
+    <label for="inputPassword" class="sr-only">Sua senha</label>
     <input
     type="password"
     id="inputPassword"
@@ -35,13 +30,14 @@
     />
     <div class="checkbox mb-3">
     <label>
-        <input type="checkbox" value="remember-me" /> Remember me
+        <input type="checkbox" value="remember-me" /> Lembrar senha
     </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">
-    Sign in
+        <i class="fa fa-sign-in"></i>
+    Acessar
     </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
 </form>
     
 {% endblock %}
