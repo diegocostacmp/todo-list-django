@@ -19,12 +19,8 @@ class todoForm(forms.ModelForm):
         super(todoForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False
-        self.helper.layout = Layout(
-            Div(
-                Field("title"),
-                Field("category")
-            )
-        )
+        self.helper.layout = Layout(Div(Field("title"), Field("category")))
+
     class Meta:
         model = TodoList
         sequence = ["title", "category"]

@@ -24,12 +24,12 @@
     {% block style %} 
     {% endblock %}
   </head>
-  <body>
+  <body class="text-center">
     {% block main %} 
     {% endblock %} 
 
     {% block script %} 
     {% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
   </body>
 </html>

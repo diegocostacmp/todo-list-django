@@ -15,29 +15,31 @@
                     <div class="inputContainer half last right">
                         {{ form.category|as_crispy_field }}
                     </div>
-                    <div class="row">
-                        <button class="taskAdd" name="taskAdd" type="submit"><i class="fa fa-plus icon"></i>Salvar</button>
+                    <div id="managerButton" class="row">
+                        <button id="taskAdd" class="taskAdd" name="taskAdd" value="">
+                            <i class="fa fa-plus icon"></i>Salvar
+                        </button>
                         <button class="taskDelete" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();">
                             <i class="fa fa-trash-o icon"></i>                            </i>Excluir</i>
                         </button>
                     </div>
+                    <ul class="taskList">
+                        {% for todo in todos %} 
+                            <li class="taskItem">
+                                <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.uuid }}" value="{{ todo.uuid }}">
+                                <label for="{{ todo.uuid }}"><span class="complete-">{{ todo.title }}</span></label>
+                                <a onclick="retrieveToDo('{{todo.uuid}}')" class="category-base" name="taskEdit" type="submit" value="{{todo.uuid}}" style="width: 36px;">
+                                    <i class="fa fa-edit fa-size-base" style="margin-right: 0px; color:white;"></i>
+                                </a>
+                                <a class="category-base bg-primary" data-toggle="tooltip" data-placement="top" title="Tarefas" style="width: 36px;">
+                                    <i class="fa fa-list fa-size-base" style="margin-right: 0px; color:white;"></i>
+                                </a>
+                                <strong class="taskDate" ><i class="fa fa-calendar fa-size-base"></i>{{ todo.created }} <br> </strong>
+                                <strong class="taskDate"><i class="fa fa-check fa-size-base "></i>{{ todo.category }}</strong>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </form>
-                <ul class="taskList">
-                    {% for todo in todos %} 
-                        <li class="taskItem">
-                            <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.id }}" value="{{ todo.id }}">
-                            <label for="{{ todo.id }}"><span class="complete-">{{ todo.title }}</span></label>
-                            <a class="category-base" style="width: 36px;">
-                                <i class="fa fa-edit fa-size-base" style="margin-right: 0px; color:white;"></i>
-                            </a>
-                            <a class="category-base bg-primary" data-toggle="tooltip" data-placement="top" title="Tarefas" style="width: 36px;">
-                                <i class="fa fa-list fa-size-base" style="margin-right: 0px; color:white;"></i>
-                            </a>
-                            <strong class="taskDate" ><i class="fa fa-calendar fa-size-base"></i>{{ todo.created }} <br> </strong>
-                            <strong class="taskDate"><i class="fa fa-check fa-size-base "></i>{{ todo.category }}</strong>
-                        </li>
-                    {% endfor %}
-                </ul>
             </div>
         </div>
     </div>
@@ -45,11 +47,54 @@
 
 {% block script %}
     <script type="text/javascript">
+        // using jQuery to generate csrf_token
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
 
+        function retrieveToDo(todo_uuid){
+            //token de sessao
+            var csrftoken = getCookie('csrftoken');
+
+            $.ajax({
+                headers: {'X-CSRFToken': csrftoken},
+                type: 'POST',
+                assync: true,
+                crossDomain: true,
+                url: "{% url 'todo:todo_retrieve' %}",
+                data: {
+                    'todo_uuid': todo_uuid
+                },
+                datatype: 'json',
         
+                success: function(data) { 
+                    $("#id_title").val(data.title);
+                    $("#id_category").val(data.category);
+                    $("#taskAdd").val(data.todo_uuid);
+
+                    
+                },
+                error: function(){
+                    
+                }
+            });
+        }
     </script>
 {% endblock %}
 
