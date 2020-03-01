@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect, get_object_or_404
-from apps.todo.models import TodoList, Category
 import datetime
-from django.views.decorators.http import require_http_methods, require_GET, require_POST
-from .forms import todoForm
-from django.http import request
 import json
-from django.http import JsonResponse
+
+from django.http import JsonResponse, request
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_GET, require_http_methods, require_POST
+
+from apps.todo.models import Category, TodoList
+
+from .forms import todoForm
 
 
 @require_http_methods(["POST", "GET"])
@@ -61,6 +63,7 @@ def todo_edit(request):
         if form.is_valid():
             form.save()
     return None
+
 
 @require_POST
 def todo_delete(request):

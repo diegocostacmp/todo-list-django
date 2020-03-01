@@ -113,5 +113,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+AUTH_USER_MODEL = 'core.User'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
