@@ -1,44 +1,69 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block style %}
+    <style>
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            
+          }
+    </style>
+{% endblock %}
 {% block main %}
-<form class="form-signin">
-    <img
-    class="mb-4"
-    src="{% static 'img/task1.png' %}"
-    alt=""
-    width="72"
-    height="72"
-    />
-    <h1 class="h3 mb-3 font-weight-normal">We Can Do</h1>
-    <label for="inputEmail" class="sr-only">Endereço de e-mail</label>
-    <input
-    type="email"
-    id="inputEmail"
-    class="form-control"
-    placeholder="Email address"
-    required
-    autofocus
-    />
-    <label for="inputPassword" class="sr-only">Sua senha</label>
-    <input
-    type="password"
-    id="inputPassword"
-    class="form-control"
-    placeholder="Password"
-    required
-    />
-    <div class="checkbox mb-3">
-    <label>
-        <input type="checkbox" value="remember-me" /> Lembrar senha
-    </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">
-        <i class="fa fa-sign-in"></i>
-    Acessar
-    </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-</form>
-    
+    <body class="text-center sign-in">
+        <form class="form-signin" id="formLogin" method="POST" action="{% url 'core:login' %}">
+            {% csrf_token %}
+            <img
+            class="mb-4"
+            src="{% static 'img/task1.png' %}"
+            alt=""
+            width="72"
+            height="72"
+            />
+            <h1 class="h3 mb-3 font-weight-normal">We Can Do</h1>
+            {% if msg_return == "not_found" %}
+                <div class="alert alert-warning" role="alert">
+                    Desculpe! Usuário não cadastrado no sistema.
+                </div>
+            {% elif msg_return == "invalid_credentials" %}
+                <div class="alert alert-warning" role="alert">
+                    Desculpe! Usuário ou senha incorretos.
+                </div>
+            {% else %}
+            {% endif %}
+            <label for="inputEmail" class="sr-only">Endereço de e-mail</label>
+            <input
+            type="email"
+            id="inputEmail"
+            name="inputEmail"
+            class="form-control"
+            placeholder="Endereço de e-mail"
+            required
+            autofocus
+            />
+            <label for="inputPassword" class="sr-only">Sua senha</label>
+            <input
+            type="password"
+            id="inputPassword"
+            name="inputPassword"
+            class="form-control"
+            placeholder="Sua senha"
+            required
+            />
+            <div class="checkbox mb-3">
+                <a href="{% url 'core:reset_password' %}" style="float: left;">Recuperar senha</a>
+                <a href="{% url 'core:sign_up' %}" style="float: right;">Cadastre-se</a>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <i class="fa fa-sign-in"></i>
+                Acessar
+            </button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </body>  
 {% endblock %}
 

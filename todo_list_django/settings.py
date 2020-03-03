@@ -15,7 +15,10 @@ SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
+
+# email requested from company
+EMAIL_BASE = "admin@biome-hub.com"
 
 
 # Application definition
@@ -98,13 +101,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -118,3 +121,23 @@ AUTH_USER_MODEL = 'core.User'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
+
+# login redirect
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+CELERY_BROKER_URL = "redis://h:p8ee017c79d74f13659bb5bffee2aaa79b7496608e83802e52f74812950e6290a@ec2-52-0-140-223.compute-1.amazonaws.com:22399"
+
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'biomehubtest@gmail.com'
+EMAIL_HOST_PASSWORD = 'a2eeb760ba9f57'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
