@@ -11,18 +11,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
+SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
+DEBUG = True
 
-# ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Config from decouple
 # SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['wecando.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = ['wecando.herokuapp.com', '127.0.0.1']
 
 # email requested from company
 EMAIL_BASE = "admin@biome-hub.com"
