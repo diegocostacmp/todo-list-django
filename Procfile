@@ -1,1 +1,1 @@
-web: gunicorn turismo.wsgi --log-file -
+web: gunicorn todo_list_django.wsgi --log-file -
