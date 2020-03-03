@@ -20,59 +20,58 @@ from .tasks import send_email_task
 @require_http_methods(["POST", "GET"])
 def login(request):
     # try:
-    email = request.POST.get("inputEmail", "")
-    password_input = request.POST.get("inputPassword", "")
+    # email = request.POST.get("inputEmail", "")
+    # password_input = request.POST.get("inputPassword", "")
 
-    if request.method == "POST":
-        print(request.POST)
-        if email == settings.EMAIL_BASE:
+    # if request.method == "POST":
+    #     print(request.POST)
+    #     if email == settings.EMAIL_BASE:
 
-            # xx - day * 2
-            # yy - month * 2
-            # zz - hour update
+    #         # xx - day * 2
+    #         # yy - month * 2
+    #         # zz - hour update
 
-            # user exist db ?
-            u_count = User.objects.filter(email=email).count()
-            if u_count == 1:
-                base = dt.now()
-                xx = int(base.day) * 2
-                yy = int(base.month) * 2
-                zz = base.hour
+    #         # user exist db ?
+    #         u_count = User.objects.filter(email=email).count()
+    #         if u_count == 1:
+    #             base = dt.now()
+    #             xx = int(base.day) * 2
+    #             yy = int(base.month) * 2
+    #             zz = base.hour
 
-                if int(len(str(xx)) == 1):
-                    xx = "0" + str(xx)
+    #             if int(len(str(xx)) == 1):
+    #                 xx = "0" + str(xx)
 
-                if int(len(str(yy)) == 1):
-                    yy = "0" + str(yy)
+    #             if int(len(str(yy)) == 1):
+    #                 yy = "0" + str(yy)
 
-                if int(len(str(zz)) == 1):
-                    zz = "0" + str(zz)
+    #             if int(len(str(zz)) == 1):
+    #                 zz = "0" + str(zz)
 
-                # new password generated
-                password_verified = str(xx) + str(yy) + str(zz)
-                u = get_object_or_404(User, email=email)
-                u.set_password(password_verified)
-                u.save()
-            else:
-                print("aqui........")
-                context = {"msg_return": "not_found"}
-                template_name = "registration/login.html"
-                return render(request, template_name, context)
+    #             # new password generated
+    #             password_verified = str(xx) + str(yy) + str(zz)
+    #             u = get_object_or_404(User, email=email)
+    #             u.set_password(password_verified)
+    #             u.save()
+    #         else:
+    #             print("aqui........")
+    #             context = {"msg_return": "not_found"}
+    #             template_name = "registration/login.html"
+    #             return render(request, template_name, context)
 
-        # auth user with new password
-        user = auth.authenticate(request, email=email, password=password_input)
+    #     # auth user with new password
+    #     user = auth.authenticate(request, email=email, password=password_input)
 
-        if user is not None:
-            auth.login(request, user)
-            return redirect("todo:todo_list")
-        else:
-            template_name = "registration/login.html"
-            context = {"msg_return": "invalid_credentials"}
-            return render(request, template_name, context)
-    else:
-        print("na excessao")
-        template_name = "registration/login.html"
-        return render(request, template_name, {})
+    #     if user is not None:
+    #         auth.login(request, user)
+    #         return redirect("todo:todo_list")
+    #     else:
+    #         template_name = "registration/login.html"
+    #         context = {"msg_return": "invalid_credentials"}
+    #         return render(request, template_name, context)
+    # else:
+    template_name = "registration/login.html"
+    return render(request, template_name, {})
     # except:
     #     template_name = "registration/login.html"
     #     return render(request, template_name, {})
