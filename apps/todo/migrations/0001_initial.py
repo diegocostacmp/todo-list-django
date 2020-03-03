@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 (
                     "category",
                     models.ForeignKey(
-                        default="general",
+                        default=None,
                         on_delete=django.db.models.deletion.PROTECT,
                         to="todo.Category",
                     ),
