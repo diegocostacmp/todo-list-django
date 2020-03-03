@@ -95,7 +95,11 @@ def sign_up(request):
         return render(request, template_name, {})
 
 
+<<<<<<< HEAD
 def send_email_retrieve(request):
+=======
+def reset_password(request):
+>>>>>>> f6daf384f14cb6a09b5159b28f7e2e7a30dbba47
     template_name = "registration/reset_password.html"
     if request.method == "POST":
         email = request.POST.get("inputReset", "")
@@ -115,6 +119,7 @@ def send_email_retrieve(request):
         context = {}
         return render(request, template_name, context)
 
+<<<<<<< HEAD
 @require_http_methods(["POST", "GET"])
 def redirect_reset(request, user_uuid):
     template_name = "registration/new_password.html"
@@ -138,3 +143,9 @@ def reset_password(request):
     else:
         template_name = "registration/sign_up.html"
         return render(request, template_name, {})
+=======
+
+def new_password(request, user_uuid):
+    print("bateu retorno")
+    pass
+>>>>>>> f6daf384f14cb6a09b5159b28f7e2e7a30dbba47

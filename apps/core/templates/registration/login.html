@@ -32,10 +32,13 @@
                 <div class="alert alert-warning" role="alert">
                     Desculpe! Usuário ou senha incorretos.
                 </div>
+<<<<<<< HEAD
             {% elif msg_return == "password_updated" %}
                 <div class="alert alert-success" role="alert">
                     Senha atualizada com sucesso!
                 </div>
+=======
+>>>>>>> f6daf384f14cb6a09b5159b28f7e2e7a30dbba47
             {% else %}
             {% endif %}
             <label for="inputEmail" class="sr-only">Endereço de e-mail</label>
@@ -58,7 +61,11 @@
             required
             />
             <div class="checkbox mb-3">
+<<<<<<< HEAD
                 <a href="{% url 'core:send_email_retrieve' %}" style="float: left;">Recuperar senha</a>
+=======
+                <a href="{% url 'core:reset_password' %}" style="float: left;">Recuperar senha</a>
+>>>>>>> f6daf384f14cb6a09b5159b28f7e2e7a30dbba47
                 <a href="{% url 'core:sign_up' %}" style="float: right;">Cadastre-se</a>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">
