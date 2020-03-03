@@ -13,7 +13,9 @@ from django.views.decorators.http import (require_GET, require_http_methods,
 
 from apps.core.models import User
 from todo_list_django import settings
+
 from .tasks import send_email_task
+
 
 @require_http_methods(["POST", "GET"])
 def login(request):
