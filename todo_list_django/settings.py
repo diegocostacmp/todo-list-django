@@ -1,5 +1,6 @@
 import os
 import mimetypes
+from decouple import config 
 mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -9,13 +10,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+# ALLOWED_HOSTS = ["127.0.0.1"]
+
+# Config from decouple
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = ['wecando.herokuapp.com', '127.0.0.1']
 
 # email requested from company
 EMAIL_BASE = "admin@biome-hub.com"
@@ -66,15 +73,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todo_list_django.wsgi.application'
 
 
-# Database
+# Database local
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# Ambiente producao
+from dj_database_url import parse as dburl
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 
 # Password validation
@@ -113,8 +126,9 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTH_USER_MODEL = 'core.User'
 
