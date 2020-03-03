@@ -1,7 +1,6 @@
 [
 {
     "model": "todo.category",
-    "pk": 0,
     "fields": {
         "name": "Geral",
         "uuid": "50adb817-cfd1-4c98-8184-311532291aa4"
@@ -9,7 +8,6 @@
 },
 {
     "model": "todo.category",
-    "pk": 1,
     "fields": {
         "name": "Outros",
         "uuid": "08e07e6e-ce15-4893-87d0-b122b1f4a1f7"
@@ -17,7 +15,6 @@
 },
 {
     "model": "todo.category",
-    "pk": 2,
     "fields": {
         "name": "Limpeza",
         "uuid": "94150f27-ae6f-4ba3-8f7b-0ec57dba4670"
@@ -25,7 +22,6 @@
 },
 {
     "model": "todo.category",
-    "pk": 3,
     "fields": {
         "name": "Escola",
         "uuid": "06a8fd84-798d-4248-80c4-e965cd274bb7"
@@ -33,7 +29,6 @@
 },
 {
     "model": "todo.category",
-    "pk": 4,
     "fields": {
         "name": "Pessoal",
         "uuid": "45204b48-5e71-4f13-93b7-c2b9cb2fd5d1"
@@ -41,7 +36,6 @@
 },
 {
     "model": "todo.category",
-    "pk": 5,
     "fields": {
         "name": "Trabalho",
         "uuid": "5b0c321a-eb36-4f3d-bb56-c4692340ca02"

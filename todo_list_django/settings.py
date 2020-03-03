@@ -11,16 +11,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
+# SECRET_KEY = ')5i09ha@*e2p#3q+pagaqwl0j4s)w5bi-^#kg-n@diy@td87q%'
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 # ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Config from decouple
 # SECRET_KEY = config('SECRET_KEY')
-# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['wecando.herokuapp.com', '127.0.0.1']
 
@@ -150,7 +150,7 @@ LOGIN_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-CELERY_BROKER_URL = "redis://h:p8ee017c79d74f13659bb5bffee2aaa79b7496608e83802e52f74812950e6290a@ec2-52-0-140-223.compute-1.amazonaws.com:22399"
+CELERY_BROKER_URL = "redis://h:pe1130523b57d23a8cac222df3b67e55f8882fdd01b9aa0ec85a873363fe07732@ec2-52-23-118-118.compute-1.amazonaws.com:23309"
 
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
