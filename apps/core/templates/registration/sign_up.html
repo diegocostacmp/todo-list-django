@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% load static %} {% block style %}
+<style>
+  body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+</style>
+{% endblock %} {% block main %}
+<body class="text-center sign-in">
+  <form
+    class="form-signin"
+    id="formLogin"
+    method="POST"
+    action="{% url 'core:sign_up' %}"
+  >
+    {% csrf_token %}
+    <img
+      class="mb-4"
+      src="{% static 'img/task1.png' %}"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h1 class="h3 mb-3 font-weight-normal">We Can Do</h1>
+    {% if msg_return == "success" %}
+        <div class="alert alert-success" role="alert">
+            Parabéns! Usuário cadastrado com sucesso.
+        </div>
+    {% elif msg_return == "error" %}
+        ç
+    {% else %}
+    {% endif %}
+    <label for="inputEmailSignUp" class="sr-only">Endereço de e-mail</label>
+    <input
+      type="email"
+      id="inputEmailSignUp"
+      name="inputEmailSignUp"
+      class="form-control"
+      placeholder="Endereço de e-mail"
+      required
+      autofocus
+    />
+    
+    <label for="inputPasswordSignUp" class="sr-only">Sua senha</label>
+    <input
+      type="password"
+      id="inputPasswordSignUp"
+      name="inputPasswordSignUp"
+      class="form-control"
+      placeholder="Sua senha"
+      required
+    />
+    <div class="checkbox mb-3">
+      <a href="{% url 'core:login' %}" style="float: right;">Fazer Login</a>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <i class="fa fa-sign-in"></i>
+      Cadastrar
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</body>
+{% endblock %} {% block script %}
+<script type="text/javascript">
+  $().ready(function() {
+    // validate signup form on keyup and submit
+    $("#formLogin").validate({
+      rules: {
+        inputEmail: {
+          required: true,
+          email: true
+        },
+        inputPassword: {
+          required: true
+        }
+      },
+      messages: {
+        email: "Por favor digite um e-mail válido",
+        password: {
+          required: "Por favor digite a sua senha"
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}

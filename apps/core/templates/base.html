@@ -24,12 +24,13 @@
     {% block style %} 
     {% endblock %}
   </head>
-  <body class="text-center">
+  <body>
     {% block main %} 
     {% endblock %} 
 
     {% block script %} 
     {% endblock %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.js' %}"></script>
   </body>
 </html>

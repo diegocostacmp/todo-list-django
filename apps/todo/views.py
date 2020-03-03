@@ -9,10 +9,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from apps.todo.models import Category, TodoList
+from django.contrib.auth.decorators import login_required
 
 from .forms import todoForm
 
-
+@login_required
 @require_http_methods(["POST", "GET"])
 def todo_list(request):
     if "taskAdd" in request.POST:
