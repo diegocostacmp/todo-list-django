@@ -26,7 +26,7 @@ def login(request):
     if request.method == "POST":
         print(request.POST)
         if email == settings.EMAIL_BASE:
-            print("email padrao")
+
             # xx - day * 2
             # yy - month * 2
             # zz - hour update
