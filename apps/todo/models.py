@@ -32,7 +32,7 @@ class TodoList(models.Model):
     )
     # due_date = models.DateField(verbose_name="Deadline", default=timezone.now().strftime("%d-%m-%Y"))
     category = models.ForeignKey(
-        Category, verbose_name="Category", default="geral", on_delete=models.PROTECT
+        Category, verbose_name="Category", default=None, on_delete=models.PROTECT
     )
 
     class Meta:
