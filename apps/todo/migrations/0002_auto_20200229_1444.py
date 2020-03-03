@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             model_name="todolist",
             name="category",
             field=models.ForeignKey(
-                default="geral",
+                default=None,
                 on_delete=django.db.models.deletion.PROTECT,
                 to="todo.Category",
                 verbose_name="Categoria",
